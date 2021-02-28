@@ -1,0 +1,10 @@
+<h1>タスク編集ページ</h1>
+
+<%= form_with(model: @task, local: true) do |f| %>
+
+  <%= f.text_area :content,class: 'w-75' %>
+
+  <%= f.submit 'Update',class:"btn btn-primary btn-sm" %>
+<% end %>
+
+<%= link_to 'トップページに戻る', root_path %>

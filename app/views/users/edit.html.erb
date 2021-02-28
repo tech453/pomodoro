@@ -1,0 +1,28 @@
+<div class="text-center">
+  <h1>Your setting</h1>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
+
+    <%= form_with(model: @user, local: true) do |f| %>
+      
+      <div class="form-group">
+        <%= f.label :work, 'work minute:' %>
+        <%= f.text_field :work, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :short_break, 'short_break minute:' %>
+        <%= f.text_field :short_break, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :long_break, 'long_break minute' %>
+        <%= f.text_field :long_break, class: 'form-control' %>
+      </div>
+
+      <%= f.submit 'Save', class: 'btn btn-primary btn-block' %>
+    <% end %>
+  </div>
+</div>

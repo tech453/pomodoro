@@ -1,0 +1,14 @@
+<ul class="list-unstyled">
+  <% memos.each do |memo| %>
+    <li class="media mb-3">
+      <div class="media-body">
+        <div>
+          <p class="mb-0"><%= memo.content %></p>
+          <%= link_to "Edit", edit_memo_path(memo),class: 'btn btn-success btn-sm'%>
+          <%= link_to "Delete", memo, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+        </div>
+      </div>
+    </li>
+  <% end %>
+  <%= paginate memos %>
+</ul>

@@ -1,0 +1,6 @@
+<%= form_with(model: @memo, local: true) do |f| %>
+    <div class="form-group">
+          <%= f.text_area :content, class: 'form-control', rows: 5 %>
+    </div>
+    <%= f.submit 'Add', class: 'btn btn-primary float-right' %>
+<% end %>
