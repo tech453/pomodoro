@@ -1,0 +1,16 @@
+
+<div class="row">
+<aside class="col-sm-4">
+  <h1>Posts</h1>
+    <%= render 'posts/form',posts: @posts %>
+</aside>
+<div class="col-sm-8">
+    <ul class="nav nav-tabs nav-justified mb-3">
+      <li class="nav-item"><%= link_to "all post",all_post_path,class:"nav-link active",id:"all_post_tab",remote: true %></li>
+      <li class="nav-item"><%= link_to "my post",my_post_path,class:"nav-link",id:"my_post_tab",remote: true %></li>
+    </ul>
+    <div id="posts-box">
+      <%= render 'posts/posts', posts: @posts %>  
+    </div>
+    
+</div>

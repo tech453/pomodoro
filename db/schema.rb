@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_28_151514) do
+ActiveRecord::Schema.define(version: 2021_03_02_125546) do
 
   create_table "memos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(version: 2021_02_28_151514) do
     t.integer "today_work_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "lasttime", default: ""
+    t.boolean "is_work", default: true, null: false
   end
 
   add_foreign_key "memos", "users"

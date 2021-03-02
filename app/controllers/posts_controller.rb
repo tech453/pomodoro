@@ -5,18 +5,23 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      flash[:success] = 'メッセージを投稿しました。'
+      flash[:success] = 'つぶやきを投稿しました。'
       redirect_to root_url
     else
-      @posts = current_user.posts.order(id: :desc).page(params[:page])
-      flash.now[:danger] = 'メッセージの投稿に失敗しました。'
+      @post = current_user.posts.build  
+      @posts = Post.all.order(id: :desc).page(params[:page])
+      @memo = current_user.memos.build  
+      @memos = current_user.memos.order(id: :desc).page(params[:page])
+      @task = current_user.tasks.build  
+      @tasks = current_user.tasks.order(id: :desc).page(params[:page])      
+      flash.now[:danger] = 'つぶやきの投稿に失敗しました。'
       render 'toppages/index'
     end
   end
 
   def destroy
     @post.destroy
-    flash[:success] = 'メッセージを削除しました。'
+    flash[:success] = 'つぶやきを削除しました。'
     redirect_back(fallback_location: root_path)
   end
 

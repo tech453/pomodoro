@@ -1,18 +1,37 @@
-<% if logged_in? %>
-  <div class="row">
-    <aside class="col-sm-4">
-      <%= render 'posts/form',posts: @posts %>
-      
-    </aside>
-    <div class="col-sm-8">
-      <%= render 'posts/posts', posts: @posts %>
-    </div>
-  </div>
-<% else %>
   <div class="center jumbotron">
-    <div class="text-center">
-      <h1>Welcome to the Microposts</h1>
-      <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary' %>
-    </div>
+      <div class="text-center">
+        <% if logged_in?  %>
+          <h1 id="timer"><%= current_user.work %>:00</h1>
+        <% else %>
+          <h1 id="timer">25:00</h1>
+        <% end %>
+        </h1>
+        <%= link_to 'START', start_path, class: 'btn btn-lg btn-primary', id: "start_button",remote: true %>
+        <%= link_to 'STOP', stop_path, class: 'btn btn-lg btn-primary', id: "stop_button",remote: true %>
+      </div>
   </div>
+  
+<% if logged_in? %>
+  <p>today_work_count : <%= current_user.today_work_count %></p>
+  <ul class="nav nav-tabs nav-justified mb-3">
+    
+    <li class="nav-item"><%= link_to 'task & memo',task_and_memo_path,id:"task_memo_tab",class:"nav-link active",remote: true %></li>
+    <li class="nav-item"><%= link_to 'post',posts_path,id:"post_tab",class:"nav-link",remote: true %></li>
+  </ul>
+  <div class="row" id="contents-box">
+    <%= render 'toppages/task_memo' %>
+  </div>
+  
+  <script>
+    work=<%= current_user.work %>
+    short_break=<%= current_user.short_break %>
+    long_break=<%= current_user.long_break %>
+    is_work=<%= current_user.is_work %>
+    work_count=<%= current_user.today_work_count %>
+    
+    window.onbeforeunload=set_lasttime;
+    window.onload=function(){
+      restore_lasttime();
+    };
+  </script>
 <% end %>

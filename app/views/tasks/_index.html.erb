@@ -1,8 +1,14 @@
-<h1>tasks</h1>
-
-<div class="row">
-    <div class="col-sm-8">
-        <%= render 'tasks/form',task: @task %>
-        <%= render 'tasks/tasks', tasks: @tasks %>
+<h1>Tasks</h1>
+<div class="w-100" style="margin-bottom:10px;">
+    <%= form_with(model: @task, local: true) do |f| %>
+    <%= render 'layouts/error_messages',model: f.object %>
+    <div class="row">
+        <%= f.text_field :content, class: 'form-control col-sm-6' %>
+        <%= f.submit 'Add', class: 'btn btn-primary btn-block offset-sm-1 col-sm-2' %>    
     </div>
+<% end %>
+</div>
+
+<div class="w-100">
+    <%= render 'tasks/tasks', tasks: @tasks %>
 </div>

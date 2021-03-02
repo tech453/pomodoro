@@ -1,11 +1,16 @@
 <ul class="list-unstyled">
   <% @tasks.each do |task| %>
     <li class="media mb-3">
+      
       <div class="media-body">
-        <div>
-          <p class="mb-0"><%= task.content %></p>
-          <%= link_to "Edit", edit_task_path(task),class: 'btn btn-success btn-sm'%>
+        
+        <div class="row">
+          <input value="<%= task.content %>" class="form-control col-sm-6" readonly></input>
+          <%= link_to "Edit",edit_task_path(task),class: "btn btn-success btn-sm" %>
           <%= link_to "Delete", task, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+        </div>
+        <div>
+            
         </div>
       </div>
     </li>

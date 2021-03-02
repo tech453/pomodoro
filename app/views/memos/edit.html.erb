@@ -1,6 +1,7 @@
 <h1>メモ編集ページ</h1>
 
 <%= form_with(model: @memo, local: true) do |f| %>
+  <%= render 'layouts/error_messages',model: f.object %>
 
   <%= f.text_area :content,class: 'w-75' %>
 
