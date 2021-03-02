@@ -49,6 +49,11 @@ test:
 #
 production:
   <<: *default
+  
+production:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
   database: tech_pomodoro_production
   username: tech_pomodoro
   password: <%= ENV['TECH_POMODORO_DATABASE_PASSWORD'] %>
