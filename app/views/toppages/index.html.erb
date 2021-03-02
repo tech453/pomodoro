@@ -12,7 +12,6 @@
   </div>
   
 <% if logged_in? %>
-  <p>today_work_count : <%= current_user.today_work_count %></p>
   <ul class="nav nav-tabs nav-justified mb-3">
     
     <li class="nav-item"><%= link_to 'task & memo',task_and_memo_path,id:"task_memo_tab",class:"nav-link active",remote: true %></li>
